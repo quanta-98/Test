@@ -1,0 +1,83 @@
+﻿<script src="~/Content/js/AboutJs/about.js"></script>
+<style>
+    th {
+        white-space: nowrap;
+    }
+</style>
+
+
+<div ng-controller="AboutCtrl" ng-app="myApp">
+    <div class="form-group">
+        <label class="control-label">Phòng ban</label>
+        <select class="form-control" ng-model="ten_phongban" ng-click="LoadListEmployee(ten_phongban)">
+            <option value="INTE_HL">IT</option>
+            <option value="PURC_HL">Thu Mua</option>
+            <option value="WALO_HL">WALO_HL</option>
+        </select>
+    </div>
+
+    <table class="table table-responsive">
+        <tr>
+            <th>Họ và tên</th>
+            <th>Ảnh đại diện</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Địa chỉ</th>
+            <th>Mã phòng ban</th>
+            <th>Tên phòng ban</th>
+            <th>Chức vụ</th>
+        </tr>
+        <tr data-toggle="modal" data-target="#viewDetailEmployee" ng-click="ViewDetailEmployee(x.USERNAME)" ng-repeat="x in listEmployee">
+            <td>{{x.HO_VA_TEN}}</td>
+            <td><img style="width: 20px;height: 20px;border-radius: 50%;" src="http://sales.hoplong.com/Content/Images/Avatar/{{x.AVATAR}}" /></td>
+            <td>{{x.NGAY_SINH}}</td>
+            <td>{{x.GIOI_TINH}}</td>
+            <td>{{x.DIA_CHI}}</td>
+            <td>{{x.MA_PHONG_BAN}}</td>
+            <td>{{x.TEN_PHONG_BAN}}</td>
+            <td>{{x.CHUC_VU}}</td>
+        </tr>
+    </table>
+
+    <!--Modal-->
+    <div class="modal fade" id="viewDetailEmployee">
+        <div style="width: 80%;" class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Chi tiết nhân viên</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Ảnh đại diện</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th>Địa chỉ</th>
+                            <th>Mã phòng ban</th>
+                            <th>Tên phòng ban</th>
+                            <th>Chức vụ</th>
+                        </tr>
+                        <tr>
+                            <td>{{viewDetailEmployee.HO_VA_TEN}}</td>
+                            <td><img style="width: 20px;height: 20px;border-radius: 50%;" src="http://sales.hoplong.com/Content/Images/Avatar/{{viewDetailEmployee.AVATAR}}" /></td>
+                            <td>{{viewDetailEmployee.NGAY_SINH}}</td>
+                            <td>{{viewDetailEmployee.GIOI_TINH}}</td>
+                            <td>{{viewDetailEmployee.DIA_CHI}}</td>
+                            <td>{{viewDetailEmployee.MA_PHONG_BAN}}</td>
+                            <td>{{viewDetailEmployee.TEN_PHONG_BAN}}</td>
+                            <td>{{viewDetailEmployee.CHUC_VU}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
