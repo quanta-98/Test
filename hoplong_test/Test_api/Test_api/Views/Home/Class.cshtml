@@ -1,0 +1,43 @@
+﻿
+<script src="~/Content/js/Class/class.js"></script>
+
+<div ng-app="myApp" ng-controller="ClassCtrl">
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>HỌ</th>
+            <th>TÊN</th>
+            <th><button data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-info">Thêm</button></th>
+            <th><button class="btn btn-success">Sửa</button></th>
+            <th><button class="btn btn-info">Xóa</button></th>
+        </tr>
+        <tr ng-repeat="x in listData">
+            <td>{{x._id}}</td>
+            <td>{{x.firstname}}</td>
+            <td>{{x.lastname}}</td>
+        </tr>
+    </table>
+
+    <!--MODAL-->
+
+    <!--Thêm-->
+    <div id="bd-example-modal-lg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <table class="table">
+                    <tr>
+                        <th>HỌ</th>
+                        <th>TÊN</th>
+                        <th><button ng-click="AddPeople(ho,ten)" class="btn btn-success">Lưu</button></th>
+                    </tr>
+                    <tr>
+                        <td><input ng-model="ho" class="form-control" type="text"/></td>
+                        <td><input ng-model="ten" class="form-control" type="text"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

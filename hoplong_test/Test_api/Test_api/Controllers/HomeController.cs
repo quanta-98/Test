@@ -8,7 +8,7 @@ namespace Test_api.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Class()
         {
             return View();
         }
@@ -20,7 +20,7 @@ namespace Test_api.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult HighCharts()
         {
             ViewBag.Message = "Your contact page.";
 

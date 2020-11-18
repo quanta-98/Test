@@ -16,7 +16,7 @@
     $scope.ViewDetailEmployee = function (username) {
         $http.get('http://sales.hoplong.com/api/Api_NhanVien/GetChiTietNhanVien/' + username).then(function (response) {
             $scope.viewDetailEmployee = response.data;
-            console.log($scope.viewDetailEmployee);
+            console.log('$scope.viewDetailEmployee');
         })
     }
 })
