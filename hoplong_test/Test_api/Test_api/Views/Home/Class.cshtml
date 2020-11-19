@@ -1,21 +1,38 @@
 ﻿
 <script src="~/Content/js/Class/class.js"></script>
-
+<style>
+    .hover-cursor-pointer:hover {
+        cursor:pointer;
+    }
+    .display-none {
+        display: none;
+    }
+    .hover-cursor-pointer:hover .display-none{
+        display:block;
+    }
+    button {
+        margin-right: 8px;
+        outline:none;
+    }
+</style>
 <div ng-app="myApp" ng-controller="ClassCtrl">
 
     <table class="table">
         <tr>
-            <th>ID</th>
-            <th>HỌ</th>
-            <th>TÊN</th>
-            <th><button data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-info">Thêm</button></th>
-            <th><button class="btn btn-success">Sửa</button></th>
-            <th><button class="btn btn-info">Xóa</button></th>
+            <th style="width:300px">ID</th>
+            <th style="width:300px">HỌ</th>
+            <th style="width:300px">TÊN</th>
+            <th style="width:300px"><button data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-info">Thêm</button></th>
         </tr>
-        <tr ng-repeat="x in listData">
+        <tr style="height:60px" class="hover-cursor-pointer" ng-click="ViewDetail(x._id)" ng-repeat="x in listData">
             <td>{{x._id}}</td>
             <td>{{x.firstname}}</td>
             <td>{{x.lastname}}</td>
+            <td style="display: flex">
+                <button ng-click="ViewDetail(detailStudent._id)" data-toggle="modal" data-target="#edit" class="btn btn-success display-none">Sửa</button>
+                <button style="background-color: blue" data-toggle="modal" data-target="#detail" class="btn btn-success display-none">Chi tiết</button>
+                <button ng-click="DeleteStudent(detailStudent._id)" style="background-color: red" data-toggle="modal" data-target="#delete" class="btn btn-success display-none">Xóa</button>
+            </td>
         </tr>
     </table>
 
@@ -34,6 +51,47 @@
                     <tr>
                         <td><input ng-model="ho" class="form-control" type="text"/></td>
                         <td><input ng-model="ten" class="form-control" type="text"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--Xem chi tiết-->
+    <div id="detail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>HỌ</th>
+                        <th>TÊN</th>
+                    </tr>
+                    <tr>
+                        <td>{{detailStudent._id}}</td>
+                        <td>{{detailStudent.firstname}}</td>
+                        <td>{{detailStudent.lastname}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--Sửa thông tin-->
+    <div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>HỌ</th>
+                        <th>TÊN</th>
+                        <th><button ng-click="EditInfo(detailStudent._id,detailStudent.firstname,detailStudent.lastname)" class="btn btn-success">Lưu</button></th>
+                    </tr>
+                    <tr>
+                        <td><input ng-model="detailStudent._id" type="text" class="form-control" disabled/></td>
+                        <td><input ng-model="detailStudent.firstname" type="text" class="form-control" /></td>
+                        <td><input ng-model="detailStudent.lastname" type="text" class="form-control" /></td>
                     </tr>
                 </table>
             </div>
