@@ -1,4 +1,4 @@
-﻿var app = angular.module('myApp', []);
+﻿var app = angular.module('myApp', ['ngMessages', 'ngRoute', 'ngResource']);
 
 var chartUrl = 'https://wise-mochizuki.hoplongtech.com/'
 
