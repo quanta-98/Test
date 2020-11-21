@@ -22,7 +22,21 @@ namespace Test_api.Controllers
 
         public ActionResult HighCharts()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your highCharts.";
+
+            return View();
+        }
+
+        public ActionResult LearnAndTestAngularJs()
+        {
+            ViewBag.Message = "Study.";
+
+            return View();
+        }
+
+        public ActionResult Weather()
+        {
+            ViewBag.Message = "Your weather.";
 
             return View();
         }

@@ -1,0 +1,18 @@
+﻿<script src="~/Content/js/LearnAndTestAngularJs/learn-test-angularjs.js"></script>
+
+<div ng-app="myApp" ng-controller="LearnAndTestAngularjs">
+    <h1>Weather Forecast</h1>
+    <form name="myForm">
+        <label>
+            Enter text:
+            <input type="email" ng-model="field" name="myField" required maxlength="15" />
+
+        </label>
+        <div ng-messages="myForm.myField.$error" role="alert">
+            <div class="alert alert-danger"  ng-message="required">Please enter a value for this field.</div>
+            <div class="alert alert-danger" ng-message="email">This field must be a valid email address.</div>
+            <div ng-message="maxlength">This field can be at most 15 characters long.</div>
+        </div>
+
+    </form>
+</div>
